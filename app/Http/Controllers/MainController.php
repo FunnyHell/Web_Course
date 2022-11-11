@@ -8,8 +8,9 @@ use App\Models\Product;
 class MainController extends Controller
 {
     public function show(){
-        $post = Product::find(1)->title;
-        var_dump($post);
+        $prod = new Product();
+        $post = $prod->GetProducts(1);
+        dump($post[0]->image);
         return view('MainPage', ['post' => $post]);
     }
 }
