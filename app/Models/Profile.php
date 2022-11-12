@@ -10,7 +10,7 @@ class Profile extends Model
 {
     use HasFactory;
 
-    public function add($name, $sex, $num, $pass)
+    public function add($name, $num, $pass, $sex)
     {
         DB::table('profiles')->insert(
             ['name' => $name, 'sex' => $sex, 'number' => $num, 'password' => $pass]);
