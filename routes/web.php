@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [Controllers\MainController::class, 'show']);
+Route::get('/prod/{id}', [Controllers\ProductController::class, 'show']);
+

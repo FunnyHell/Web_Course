@@ -12,13 +12,15 @@
 <h1>Hello, world</h1><br>
 <div>
     @for($i = 0; $i < count($post); $i++)
-        <div class="product">
-            <img src="{{asset('storage'). $post[$i]->image}}">
-            <div class="product-text">
-                <h2 style="text-align: left">{{$post[$i]->title}}</h2>
-                <h2 style="text-align: right">{{$post[$i]->cost}}</h2>
+        <a href="{{url('prod', $i + 1)}}">
+            <div class="product">
+                <img src="{{asset('storage'). $post[$i]->image}}">
+                <div class="product-text">
+                    <h2 style="text-align: left">{{$post[$i]->title}}</h2>
+                    <h2 style="text-align: right">{{$post[$i]->cost}} $</h2>
+                </div>
             </div>
-        </div>
+        </a>
     @endfor
 </div>
 </body>

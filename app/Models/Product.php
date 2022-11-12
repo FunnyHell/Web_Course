@@ -16,4 +16,8 @@ class Product extends Model
         $right = $page * 15;
         return DB::table('products')->where('id', '>=', $left)->where('id', '<=', $right)->get();
     }
+
+    public function GetProduct($id){
+        return DB::table('products')->find($id);
+    }
 }
