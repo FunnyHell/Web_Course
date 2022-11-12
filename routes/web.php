@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Controllers\MainController::class, 'show']);
 Route::get('/prod/{id}', [Controllers\ProductController::class, 'show']);
 
+Route::get('/registration', [Controllers\ProfileController::class,'show']);
+Route::post('/registration', [Controllers\ProfileController::class,'saving']);
+Route::get('/login', [Controllers\ProfileController::class, 'authorization']);
