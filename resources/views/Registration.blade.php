@@ -15,19 +15,24 @@
 <body>
 <div class="registration-form">
     <form method="post" action="/registration">
-        <input type="text" placeholder="name" name="name"><br>
+        @csrf
+        <input type="text" placeholder="name" name="name" required><br>
 
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="sex" id="male" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="sex" id="male" autocomplete="off" value="male" checked>
             <label class="btn btn-outline-primary" for="male">Male</label>
 
-            <input type="radio" class="btn-check" name="sex" id="female" autocomplete="off">
+            <input type="radio" class="btn-check" name="sex" id="female" autocomplete="off" value="female">
             <label class="btn btn-outline-primary" for="female">Female</label>
+
+            <input type="radio" class="btn-check" name="sex" id="None" autocomplete="off" value="none">
+            <label class="btn btn-outline-primary" for="None">None</label>
+
         </div>
         <br>
-
-        <input type="tel" name="number" placeholder="number"><br>
-        <input type="password" name="password" placeholder="password"><br>
+        <input type="tel" name="number" placeholder="number" required pattern="[0-9]{10}"><br>
+        <input type="password" name="password" placeholder="password" required><br>
+        <input type="date" max="2022-01-01" name="date">
         <input type="submit">
         <input type="reset">
     </form>
