@@ -12,9 +12,7 @@ class Product extends Model
 
     public function GetProducts($page)
     {
-        $left = ($page - 1) * 1;
-        $right = $page * 15;
-        return DB::table('products')->where('id', '>=', $left)->where('id', '<=', $right)->get();
+        return DB::table('products')->paginate(15);
     }
 
     public function GetProduct($id){
