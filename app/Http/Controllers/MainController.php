@@ -11,6 +11,6 @@ class MainController extends Controller
         $Product = new Product();
         $post = $Product->GetProducts(1);
         dump($post[0]->image);
-        return view('MainPage', ['post' => $post]);
+        return view('MainPage', ['posts' => $post]);
     }
 }
