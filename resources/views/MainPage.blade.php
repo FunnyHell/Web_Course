@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="{{asset('storage').'/css/styles.css'}}">
 </head>
 <body>
-<h1>Hello, world</h1><br>
+@extends('layouts.app')
+@section('content')
+
 <div>
     @for($i = 0; $i < count($post); $i++)
         <a href="{{url('prod', $i + 1)}}">
@@ -23,5 +25,6 @@
         </a>
     @endfor
 </div>
+@endsection
 </body>
 </html>
