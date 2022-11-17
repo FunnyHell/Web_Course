@@ -8,7 +8,10 @@
     <title>Error</title>
 </head>
 <body>
-    <h1>Error {{$code}}, try again:</h1>
-<a href="/registration"></a>
+<h1>Error {{$code}}</h1>
+@if($code == 0) <h2>Проверьте данные и попробуйте ещё раз:</h2>
+@else($code == -1)<h2>Убедитесь, что загружаете картинку и попробуйте ещё раз:</h2>
+@endif
+<a href="/home">Вернуться</a>
 </body>
 </html>

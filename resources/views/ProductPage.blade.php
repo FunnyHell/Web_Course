@@ -14,19 +14,19 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>{{$prod->title}}</h1>
-            <br>
-            <p>{{$prod->description}}</p>
-        </div>
-        <div class="col">
-            <img src="{{asset('storage'). $prod->image}}">
-            <h2 style="text-align: center">{{$prod->cost}} $</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>{{$prod->title}}</h1>
+                <br>
+                <p>{{$prod->description}}</p>
+            </div>
+            <div class="col">
+                <img src="{{asset('storage'). $prod->image}}">
+                <h2 style="text-align: center">{{$prod->cost}} $</h2>
+            </div>
         </div>
     </div>
-</div>
 @endsection
 </body>
 </html>

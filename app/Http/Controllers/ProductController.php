@@ -14,4 +14,13 @@ class ProductController extends Controller
         dump($post);
         return view('ProductPage', ['prod' => $post]);
     }
+
+    public function add(Request $request){
+        $Product = new Product();
+        dump($request->input('name'));
+        $checker = $Product->add($request);
+        if ($checker == 0) return view('Error', ['code' => 0]);
+        if ($checker == -1) return view('Error', ['code'  => -1]);
+        return(redirect('/'));
+    }
 }

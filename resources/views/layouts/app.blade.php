@@ -44,8 +44,8 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item">
-
+                        <div style="display: flex">
+                            <a href="/home" class="dropdown-item" style="margin-right: 7px">Profile</a>
                             <div aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -57,7 +57,7 @@
                                     @csrf
                                 </form>
                             </div>
-                        </li>
+                        </div>
                     @endguest
                 </ul>
             </div>
