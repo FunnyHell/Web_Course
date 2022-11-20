@@ -12,9 +12,11 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function GetProducts($page)
+    public function GetProducts()
     {
-        return DB::table('products')->paginate(15);
+        $res = DB::table('products')->paginate(15);
+        $res->withPath('/');
+        return $res;
     }
 
     public function GetProduct($id)
@@ -30,14 +32,20 @@ class Product extends Model
         else $description = NULL;
         if ($req->input('cost')) $cost = $req->input('cost');
         else return 0;
-        $img = $req->file('img');
-        $filename = $req->file('img')->getClientOriginalName();
-        if (!$this->imageChecker($filename)) {
-            return -1;
+        if ($req->file('img') != null) {
+            $img = $req->file('img');
+            $filename = $req->file('img')->getClientOriginalName();
+            if (!$this->imageChecker($filename)) {
+                return -1;
+            }
+            $url = Storage::disk('public')->put('/img', $img);
+            DB::table('products')->insert(['title' => $name, 'cost' => $cost, 'description' => $description, 'image' => '/' . $url]);
+            return 1;
         }
-        $url = Storage::disk('public')->put('/img', $img);
-        DB::table('products')->insert(['title' => $name, 'cost' => $cost, 'description' => $description, 'image' => '/' . $url]);
-        return 1;
+        else {
+            DB::table('products')->insert(['title' => $name, 'cost' => $cost, 'description' => $description, 'image' => '/img/placeholder.png']);
+            return 1;
+        }
     }
 
     private function imageChecker($img)

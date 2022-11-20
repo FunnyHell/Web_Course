@@ -15,15 +15,30 @@
                         @endif
                         <h1>Welcome, {{$user['name']}}</h1>
                         @if($user['role'] == 'admin')
-                        <form method="post" action="/home/add" enctype="multipart/form-data">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                            <input type="text" placeholder="name" name="name">
-                            <textarea placeholder="description" name="description"></textarea>
-                            <input type="number" placeholder="cost" name="cost">
-                            <input type="file" name="img">
-                            <input type="submit">
-                        </form>
-                            @endif
+                            <form method="post" action="/home/add" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <input class="form-control" type="text" placeholder="Name" name="name" required>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control" type="number" placeholder="Cost" name="cost"
+                                               required><br>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea class="form-control" rows="3" name="description"></textarea>
+                                </div>
+                                <br>
+                                <div class="custom-file drop-zone" class="drop-zone">
+                                    <label class="custom-file-label" for="customFile">Add photo of a product:</label>
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                </div>
+                                <br>
+                                <input type="submit" class="btn btn-primary mb-2" id="submit-but">
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

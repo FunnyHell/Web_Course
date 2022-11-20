@@ -11,7 +11,6 @@ class ProductController extends Controller
     {
         $Product = new Product();
         $post = $Product->GetProduct($id);
-        dump($post);
         return view('ProductPage', ['prod' => $post]);
     }
 

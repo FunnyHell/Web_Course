@@ -9,7 +9,7 @@ class MainController extends Controller
 {
     public function show(){
         $Product = new Product();
-        $post = $Product->GetProducts(1);
+        $post = $Product->GetProducts();
         dump($post[0]->image);
         return view('MainPage', ['posts' => $post]);
     }
