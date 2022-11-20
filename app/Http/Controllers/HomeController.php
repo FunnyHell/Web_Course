@@ -23,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dump(auth()->user());
         return view('home', ['user'=> auth()->user()]);
     }
 }

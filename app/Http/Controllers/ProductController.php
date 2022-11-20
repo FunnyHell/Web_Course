@@ -16,7 +16,6 @@ class ProductController extends Controller
 
     public function add(Request $request){
         $Product = new Product();
-        dump($request->input('name'));
         $checker = $Product->add($request);
         if ($checker == 0) return view('Error', ['code' => 0]);
         if ($checker == -1) return view('Error', ['code'  => -1]);
