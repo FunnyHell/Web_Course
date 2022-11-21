@@ -14,7 +14,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container">
+    <div class="container" style="min-height: 800px">
         <div class="row">
             <div class="col">
                 <h1>{{$prod->title}}</h1>
@@ -26,10 +26,13 @@
                     <img src="{{asset('storage'). $prod->image}}">
                     <h2 style="text-align: center">{{$prod->cost}} $</h2>
                 </div>
-                <button id="buying-but" style="align-self: center">
-                    <h1><a href="/buy/{{$prod->id}}">Buy</a></h1>
-                </button>
-            </div>
+                <form method="post" action="{{url('buy', $prod->id)}}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                    <input type="hidden" name="product" value="{{ $prod->id }}"/>
+                    <input type="hidden" name="user" value="{{ auth()->user()->id }}"/>
+                    <input type="submit" id="buying-but" value="Buy">
+                </form>
+                </div>
         </div>
     </div>
 @endsection

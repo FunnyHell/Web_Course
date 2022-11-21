@@ -41,11 +41,15 @@ class Product extends Model
             $url = Storage::disk('public')->put('/img', $img);
             DB::table('products')->insert(['title' => $name, 'cost' => $cost, 'description' => $description, 'image' => '/' . $url]);
             return 1;
-        }
-        else {
+        } else {
             DB::table('products')->insert(['title' => $name, 'cost' => $cost, 'description' => $description, 'image' => '/img/placeholder.png']);
             return 1;
         }
+    }
+
+    public function addToHistory($user, $prod)
+    {
+        return DB::table('buying_history')->insert(['user_id' => $user, 'product_id' => $prod]);
     }
 
     private function imageChecker($img)
@@ -60,5 +64,18 @@ class Product extends Model
         } else {
             return 0;
         }
+    }
+
+    public function ShowHistory(){
+        $history = DB::table('buying_history')->where('user_id', '=', auth()->user()->id)->get('product_id')->toArray();
+        $arr = array();
+        foreach ($history as $item) {
+            array_push($arr, $item->product_id);
+        }
+        $db = collect();
+        foreach ($arr as $item){
+            $db->push(DB::table('products')->where('id', '=', $item)->get());
+        }
+        return $db;
     }
 }

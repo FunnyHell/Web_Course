@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['user'=> auth()->user()]);
+        if (auth()->user()['role'] == 'admin') {
+            return view('home', ['user' => auth()->user()]);
+        } else {
+            $Product = new Product();
+            $history = $Product->showHistory();
+            return view('home', ['user' => auth()->user(), 'history' => $history]);
+
+        }
     }
 }

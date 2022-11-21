@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<div style="display: none">{{$cnt = 1}}</div>
 
 @section('content')
     <div class="container" style="min-height: 800px">
@@ -37,8 +38,26 @@
                                 <br>
                                 <input type="submit" class="btn btn-primary mb-2" id="submit-but">
                             </form>
-                            @else
-
+                        @else
+                            @if($history == null)
+                                <h2>You didn't buy something yet <a href="/">Go to shopping</a></h2>
+                            @endif
+                            @foreach($history as $item)
+                                <div class="row history-card">
+                                    <div class="col">
+                                        <h3>
+                                            {{$cnt++.') '.$item[0]->title}}
+                                        </h3>
+                                        <h4>
+                                            {{$item[0]->cost}} $
+                                        </h4>
+                                        <p>{{$item[0]->description}}</p>
+                                    </div>
+                                    <div class="col-3">
+                                        <img src="{{asset('storage').$item[0]->image}}">
+                                    </div>
+                                </div>
+                            @endforeach
                         @endif
                     </div>
                 </div>
