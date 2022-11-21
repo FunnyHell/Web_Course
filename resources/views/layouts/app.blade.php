@@ -67,10 +67,23 @@
             </div>
         </div>
     </nav>
-
+    <hr>
     <main class="py-4">
         @yield('content')
     </main>
+    <footer>
+        <hr>
+        <div class="col">
+            <div class="row footer-a" id="left-part">
+                <b>Git:</b> <a href="https://github.com/FunnyHell/Web_Course"><span>link to this project</span></a> <a
+                    href="https://github.com/FunnyHell">Profile</a></p>
+            </div>
+            <div class="row" id="right-part">
+                <span class="fun"></span>
+                <i>VT-19 Omelianenko Serhii</i>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

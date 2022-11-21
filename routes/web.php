@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Controllers\MainController::class, 'show']);
 Route::get('/prod/{id}', [Controllers\ProductController::class, 'show']);
+Route::get('/buy/{id}', );
 
 Route::get('/profile/{id}');
 

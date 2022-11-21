@@ -21,9 +21,14 @@
                 <br>
                 <p>{{$prod->description}}</p>
             </div>
-            <div class="col">
-                <img src="{{asset('storage'). $prod->image}}">
-                <h2 style="text-align: center">{{$prod->cost}} $</h2>
+            <div class="col-4">
+                <div class="prod">
+                    <img src="{{asset('storage'). $prod->image}}">
+                    <h2 style="text-align: center">{{$prod->cost}} $</h2>
+                </div>
+                <button id="buying-but" style="align-self: center">
+                    <h1><a href="/buy/{{$prod->id}}">Buy</a></h1>
+                </button>
             </div>
         </div>
     </div>
