@@ -33,7 +33,7 @@
                                 <br>
                                 <div class="custom-file drop-zone" class="drop-zone">
                                     <label class="custom-file-label" for="customFile">Add photo of a product:</label>
-                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <input type="file" class="custom-file-input" id="customFile" name="img">
                                 </div>
                                 <br>
                                 <input type="submit" class="btn btn-primary mb-2" id="submit-but">

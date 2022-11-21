@@ -32,6 +32,7 @@ class Product extends Model
         else $description = NULL;
         if ($req->input('cost')) $cost = $req->input('cost');
         else return 0;
+        dd($req->file('img'));
         if ($req->file('img') != null) {
             $img = $req->file('img');
             $filename = $req->file('img')->getClientOriginalName();
