@@ -43,6 +43,7 @@
                                 <h2>You didn't buy something yet <a href="/">Go to shopping</a></h2>
                             @endif
                             @foreach($history as $item)
+                                <hr>
                                 <div class="row history-card">
                                     <div class="col">
                                         <h3>
