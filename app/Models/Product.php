@@ -32,6 +32,7 @@ class Product extends Model
         else $description = NULL;
         if ($req->input('cost')) $cost = $req->input('cost');
         else return 0;
+
         if ($req->file('img') != null) {
             $img = $req->file('img');
             $filename = $req->file('img')->getClientOriginalName();
@@ -54,7 +55,7 @@ class Product extends Model
 
     private function imageChecker($img)
     {
-        $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg', 'svgz', 'cgm', 'djv', 'djvu', 'ico', 'ief', 'jpe', 'pbm', 'pgm', 'pnm', 'ppm', 'ras', 'rgb', 'tif', 'tiff', 'wbmp', 'xbm', 'xpm', 'xwd'];
+        $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg', 'svgz', 'cgm', 'djv', 'djvu', 'ico', 'ief', 'jpe', 'pbm', 'pgm', 'pnm', 'ppm', 'ras', 'rgb', 'tif', 'tiff', 'wbmp', 'xbm', 'xpm', 'xwd', 'webp'];
 
         $explodeImage = explode('.', $img);
         $extension = end($explodeImage);
