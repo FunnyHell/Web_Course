@@ -26,13 +26,15 @@
                     <img src="{{asset('storage'). $prod->image}}">
                     <h2 style="text-align: center">{{$prod->cost}} $</h2>
                 </div>
-                <form method="post" action="{{url('buy', $prod->id)}}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-                    <input type="hidden" name="product" value="{{ $prod->id }}"/>
-                    <input type="hidden" name="user" value="{{ auth()->user()->id }}"/>
-                    <input type="submit" id="buying-but" value="Buy">
-                </form>
-                </div>
+                @if(auth()->user())
+                    <form method="post" action="{{url('buy', $prod->id)}}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                        <input type="hidden" name="product" value="{{ $prod->id }}"/>
+                        <input type="hidden" name="user" value="{{ auth()->user()->id }}"/>
+                        <input type="submit" id="buying-but" value="Buy">
+                    </form>
+                @endif
+            </div>
         </div>
     </div>
 @endsection
